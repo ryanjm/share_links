@@ -2,7 +2,8 @@ class WebLink < ActiveRecord::Base
   attr_accessible :url
 
   has_many :archive_links
-  
+  has_many :comments
+
   scope :archived, lambda { where(:archived => true) }
   
   def self.open_for(user)
@@ -24,5 +25,9 @@ class WebLink < ActiveRecord::Base
       
       self.archive! if all_archived?
     end
+  end
+
+  def title
+    "n/a"
   end
 end

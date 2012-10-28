@@ -1,0 +1,9 @@
+<h1>Recent Links</h1>
+
+<p>Welcome back <%= @user.name %></p>
+
+<ul>
+  <% @links.each do |link| %>
+    <li><%= link_to link.title, link %></li>
+  <% end %>
+</ul>

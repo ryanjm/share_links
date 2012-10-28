@@ -1,0 +1,17 @@
+<h1><%= link_to @link.title, @link.url, :target => "_blank" %></h1>
+
+
+<div class="new-comment">
+  <%= form_for [@link, @comment] do |f| %>
+    <%= f.text_area :body, size: "30x3" %><br/>
+    <%= f.submit "Comemnt" %>
+  <% end %>
+</div>
+<div class="comments">
+  <% @link.comments.each do |comment| %>
+    <div class="comment">
+      <p><%= comment.user.name %> said:</p>
+      <p><%= comment.body %></p>
+    </div>
+  <% end %>
+</div>
