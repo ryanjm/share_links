@@ -1,0 +1,2 @@
+class WebLinksController < ApplicationController
+end

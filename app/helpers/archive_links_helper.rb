@@ -1,0 +1,2 @@
+module ArchiveLinksHelper
+end
