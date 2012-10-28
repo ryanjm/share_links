@@ -1,8 +1,11 @@
 class WebLink < ActiveRecord::Base
-  attr_accessible :url
+  attr_accessible :url, :title, :comments_attributes
 
   has_many :archive_links
   has_many :comments
+  belongs_to :user
+
+  accepts_nested_attributes_for :comments, reject_if: lambda { |c| c[:body].blank? }
 
   scope :archived, lambda { where(:archived => true) }
   
@@ -27,7 +30,11 @@ class WebLink < ActiveRecord::Base
     end
   end
 
-  def title
-    "n/a"
+  def archived_by?(user)
+    !self.archive_links.where(user_id: user.id).empty?
+  end
+
+  def archived?
+    self.archived
   end
 end

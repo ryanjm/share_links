@@ -2,8 +2,22 @@
 
 <p>Welcome back <%= @user.name %></p>
 
+<div class="new-link">
+  <%= form_for @link do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+    <%= f.fields_for :comments do |comment| %>
+      <%= comment.label :body, "Comment" %>
+      <%= comment.text_area :body, size: "30x2" %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
 <ul>
   <% @links.each do |link| %>
-    <li><%= link_to link.title, link %></li>
+    <li><%= link_to link.title, link %> (submitted by: <%= link.user.name %>, last comment by: <%= link.comments.last.user.name unless link.comments.empty? %>)</li>
   <% end %>
 </ul>

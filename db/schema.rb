@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20121027224855) do
 
   create_table "web_links", :force => true do |t|
     t.string   "url"
+    t.string   "title"
     t.boolean  "archived",   :default => false
     t.integer  "user_id"
     t.datetime "created_at",                    :null => false

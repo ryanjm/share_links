@@ -73,4 +73,14 @@ describe WebLink do
     end
   end
 
+  context "#archived_by?" do
+    it "returns false if not archived by user" do
+      @w.archived_by?(@r).should be_false
+    end
+    it "returns true fi archived by user" do
+      @w.archive(@r)
+      @w.archived_by?(@r).should be_true
+    end
+  end
+
 end
