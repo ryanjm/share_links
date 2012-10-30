@@ -5,9 +5,9 @@
 <div class="new-link">
   <%= form_for @link do |f| %>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, autocomplete: 'off' %>
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, autocomplete: 'off' %>
     <%= f.fields_for :comments do |comment| %>
       <%= comment.label :body, "Comment" %>
       <%= comment.text_area :body, size: "30x2" %>
