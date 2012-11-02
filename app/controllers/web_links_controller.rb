@@ -21,7 +21,7 @@ class WebLinksController < ApplicationController
       redirect_to @link
     else
       flash[:error] = "Couldn't save"
-      render 'show'
+      render 'index' # index has the form for a new web link
     end
   end
 
