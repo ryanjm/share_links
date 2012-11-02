@@ -1,0 +1,29 @@
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.links {
+  margin: $standard-spacing 0;
+
+  .link {
+    padding: $standard-spacing;
+    background-color: darken($light-bg,5%);
+    @include border-radius(5px);
+
+    .title a {
+      font-size: 20px;
+      text-decoration: none;
+      margin: 0 $standard-spacing $standard-spacing;
+    }
+
+    .by-line {
+      font-size: 14px;
+    }
+
+    .comment {
+      display: block;
+      font-size: 16px;
+    }
+  }
+}

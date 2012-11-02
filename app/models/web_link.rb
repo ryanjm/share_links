@@ -29,7 +29,7 @@ class WebLink < ActiveRecord::Base
       self.archive! if all_archived?
     end
   end
-
+ 
   def archived_by?(user)
     !self.archive_links.where(user_id: user.id).empty?
   end

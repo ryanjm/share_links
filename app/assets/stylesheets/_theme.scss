@@ -1,0 +1,21 @@
+.new-link {
+  @include border-radius(5px);
+  background-color: darken($light-bg, 20%);
+  padding: $standard-spacing;
+  width: 400px;
+
+  h3 { margin: 0; }
+
+  input, textarea {
+    display: block;
+    margin: 10px 0 0;
+    padding: 4px;
+
+    &[type="submit"] {
+      background-color: #59584e;
+      border: 0;
+      padding: 10px;
+      @include border-radius(3px);
+    }
+  }
+}

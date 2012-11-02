@@ -3,21 +3,25 @@
 <p>Welcome back <%= @user.name %></p>
 
 <div class="new-link">
+  <h3>Share New Link</h3>
   <%= form_for @link do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title, autocomplete: 'off' %>
-    <%= f.label :url %>
-    <%= f.text_field :url, autocomplete: 'off' %>
+    <%= f.text_field :title, autocomplete: 'off', placeholder: 'Title' %>
+    <%= f.text_field :url, autocomplete: 'off', placeholder: 'URL' %>
     <%= f.fields_for :comments do |comment| %>
-      <%= comment.label :body, "Comment" %>
-      <%= comment.text_area :body, size: "30x2" %>
+      <%= comment.text_area :body, size: "30x2", placeholder: 'comment' %>
     <% end %>
-    <%= f.submit %>
+    <%= f.submit "Add Link" %>
   <% end %>
 </div>
 
-<ul>
+<div class="links">
   <% @links.each do |link| %>
-    <li><%= link_to link.title, link %> (submitted by: <%= link.user.name %>, last comment by: <%= link.comments.last.user.name unless link.comments.empty? %>)</li>
+    <div class="link">
+      <span class="title"><%= link_to link.title, link %></span>
+      <span class="by-line">Submitted by: <%= link.user.name %> - <%= time_ago_in_words(link.created_at) %> ago (<%= pluralize link.comments.count, "comment" %>)</span>
+      <% if !link.comments.empty? %>
+      <span class="comment"><%= link.comments.last.user.name %> said “<%= link.comments.last.body %>”</span>
+      <% end %>
+    </div>
   <% end %>
-</ul>
+</div>

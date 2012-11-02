@@ -27,6 +27,7 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'quiet_assets'
+  gem 'bourbon'
 end
 
 # To use ActiveModel has_secure_password
