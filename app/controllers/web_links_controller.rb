@@ -14,14 +14,14 @@ class WebLinksController < ApplicationController
   end
 
   def create
-    link = WebLink.new(params[:web_link])
-    link.comments.first.user = @user unless link.comments.empty?
-    link.user = @user
-    if link.save
-      redirect_to link
+    @link = WebLink.new(params[:web_link])
+    @link.comments.first.user = @user unless @link.comments.empty?
+    @link.user = @user
+    if @link.save
+      redirect_to @link
     else
       flash[:error] = "Couldn't save"
-      redirect_to web_links_path
+      render 'show'
     end
   end
 
