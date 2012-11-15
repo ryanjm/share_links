@@ -10,5 +10,7 @@ ShareLinks::Application.routes.draw do
   match '/sessions' => 'sessions#create', as: :sessions
   match '/logout' => 'sessions#destroy', as: :logout
 
+  match '/style-guide' => 'home#style_guide'
+
   root :to => 'home#index'
 end

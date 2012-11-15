@@ -4,12 +4,27 @@
   <title>ShareLinks</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+
+  <link href='http://fonts.googleapis.com/css?family=Cantarell:400,400italic|Playfair+Display+SC:400,900,700' rel='stylesheet' type='text/css'>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div class="container">
+  <nav>
+    <ul>
+      <li><%= link_to "All Links", web_links_path %></li>
+      <li><%= link_to "Archived", archived_web_links_path %></li>
+      <li><%= link_to "Sign In", root_path %></li>
+      <% if @user %>
+        <li><%= link_to "Logout", logout_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+
   <%= yield %>
+
 </div>
 
 

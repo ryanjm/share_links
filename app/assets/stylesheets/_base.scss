@@ -1,6 +1,6 @@
 body {
-  background-color: $light-bg;
-  font-family: Helvetica;
+  background-color: $bg-color;
+  @include text-font;
 }
 
 nav {
@@ -17,10 +17,59 @@ nav {
   }
 }
 
-h1 { font-size: 46px; }
-h2 { font-size: 30px; }
-h3 { font-size: 22px; }
+h1 { 
+  @include title-font;
+  font-size: 46px; 
+  margin: 20px 0 20px;
+}
+h2 { 
+  @include title-font;
+  font-size: 30px; 
+  margin: 10px 0 10px;
+}
+h3 { 
+  @include title-font;
+  font-size: 22px; 
+  margin: 10px 0 10px;
+}
+
+h4 {
+  @include title-font;
+  font-size: 18px;
+  margin: 5px 0 0;
+}
+  
+p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
 
 a {
-  color: $default-link;
+  color: $link-color;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($link-color, 10%);
+  }
 }
+
+input[type='text'], textarea {
+  border: 1px solid darken($bg-color, 20%);
+  padding: 2px 0;
+  text-indent: 4px;
+  color: $text-light;
+  font-size: 14px;
+
+  &:focus {
+    border: 1px solid darken($bg-color,30%);
+    outline: none;
+  }
+}
+
+input[type='submit'] {
+  border: 1px solid darken($bg-color, 50%);
+  background-color: $bg-secondary-color;
+}
+

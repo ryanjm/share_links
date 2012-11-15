@@ -1,8 +1,12 @@
 class HomeController < ApplicationController
-  before_filter :redirect_user
+  before_filter :redirect_user, except: [:style_guide]
 
   def index
     @users = User.all
+  end
+
+  def style_guide
+    render :laout => :none
   end
 
   private

@@ -1,13 +1,17 @@
 @import "bourbon";
 @import "normalize";
 
-$default-text: #2a2a2a;
-$default-link: #00204d;
-$light-bg: #f5f5f5;
+$text-color: lighten(black, 10%);
 $standard-spacing: 20px;
+$text-light: lighten(black, 15%);
 
-@import "base";
+$title-color: $text-color;
+$bg-color: white;
+$link-color: #003c46;
+$bg-secondary-color: darken($bg-color, 10%);
+
 @import "mixins";
+@import "base";
 @import "modules";
 @import "layout";
 @import "theme";

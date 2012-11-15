@@ -16,3 +16,7 @@ $ rake db:migrate
 ```
 $ guard
 ```
+
+## Google Fonts
+
+[Bookmark for reference](http://www.google.com/webfonts#UsePlace:use/Collection:Cantarell:400,400italic|Playfair+Display+SC:400,900,700)

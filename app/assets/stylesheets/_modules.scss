@@ -3,27 +3,69 @@
   margin: 0 auto;
 }
 
-.links {
-  margin: $standard-spacing 0;
+// used to show off articles
+article {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: darken($bg-secondary-color, 3%);
 
-  .link {
-    padding: $standard-spacing;
-    background-color: darken($light-bg,5%);
-    @include border-radius(5px);
-
-    .title a {
-      font-size: 20px;
-      text-decoration: none;
-      margin: 0 $standard-spacing $standard-spacing;
-    }
-
-    .by-line {
-      font-size: 14px;
-    }
-
-    .comment {
-      display: block;
-      font-size: 16px;
-    }
+  cite a {
+    @include title-font;
+    font-size: 18px;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: bold;
   }
+  .author {
+    font-size: 12px;
+    margin: 0;
+  }
+}
+
+.comment {
+  background-color: $bg-secondary-color;
+  padding: 10px;
+  margin: 10px 0;
+
+  p:first-child { margin-top: 0; }
+
+  p {
+    margin-bottom: 0;
+  }
+  
+  span {
+    font-size: 12px;
+  }
+}
+
+.new-link, .new-comment {
+  background-color: lighten($bg-secondary-color,10%);
+  padding: $standard-spacing;
+}
+
+form {
+  overflow: auto;
+
+  label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+  }
+
+  input, textarea {
+    float: left;
+  }
+
+  .control {
+    overflow: auto;
+    clear: both;
+    margin: 10px 0;
+
+    &.submit { margin-left: 110px; }
+  }
+}
+
+.controls {
+  float: right;
 }

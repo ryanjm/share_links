@@ -5,23 +5,40 @@
 <div class="new-link">
   <h3>Share New Link</h3>
   <%= form_for @link do |f| %>
-    <%= f.text_field :title, autocomplete: 'off', placeholder: 'Title' %>
-    <%= f.text_field :url, autocomplete: 'off', placeholder: 'URL' %>
+    <div class="control">
+      <%= f.label :title %>
+      <%= f.text_field :title, autocomplete: 'off', placeholder: 'Title' %>
+    </div>
+    <div class="control">
+      <%= f.label :url, "Address" %>
+      <%= f.text_field :url, autocomplete: 'off', placeholder: 'URL' %>
+    </div>
     <%= f.fields_for :comments do |comment| %>
-      <%= comment.text_area :body, size: "30x2", placeholder: 'comment' %>
+      <div class="control">
+        <%= comment.label :body, "Comment" %>
+        <%= comment.text_area :body, size: "30x2", placeholder: 'comment' %>
+      </div>
     <% end %>
-    <%= f.submit "Add Link" %>
+    <div class="control submit">
+      <%= f.submit "Add Link" %>
+    </div>
   <% end %>
 </div>
 
 <div class="links">
   <% @links.each do |link| %>
-    <div class="link">
-      <span class="title"><%= link_to link.title, link %></span>
-      <span class="by-line">Submitted by: <%= link.user.name %> - <%= time_ago_in_words(link.created_at) %> ago (<%= pluralize link.comments.count, "comment" %>)</span>
+    <article>
+      <cite><%= link_to link.title, link %></cite>
+      <div class="author">
+        <%= link.user.name %> - <%= time_ago_in_words(link.created_at) %> ago (<%= pluralize link.comments.count, "comment" %>)
+      </div>
       <% if !link.comments.empty? %>
-      <span class="comment"><%= link.comments.last.user.name %> said “<%= link.comments.last.body %>”</span>
+        <div class="comment">
+          <p><%= link.comments.last.body %></p>
+          <span><%= link.comments.last.user.name %></span>
+        </div>
       <% end %>
-    </div>
+
+    </article>  
   <% end %>
 </div>
