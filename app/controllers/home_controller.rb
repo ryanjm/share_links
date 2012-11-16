@@ -12,8 +12,6 @@ class HomeController < ApplicationController
   private
 
   def redirect_user
-    if session[:current_user_id]
-      redirect_to web_links_path
-    end
+    redirect_to web_links_path if session[:current_user_id]
   end
 end

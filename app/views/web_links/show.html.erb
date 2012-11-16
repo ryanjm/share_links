@@ -1,16 +1,19 @@
-<h1><%= link_to @link.title, @link.url, :target => "_blank" %></h1>
+<div class="header">
 
-<div class="controls">
-  <%= link_to "Delete", @link, method: :delete if @link.user == @user %>
-  <% if @link.archived_by?(@user) %>
-    Archived
-  <% else %>
-    <%= form_for [@link, @archive_link] do |f| %>
-      <%= f.submit "Archive" %>
+  <h1><%= link_to @link.title, @link.url, :target => "_blank" %></h1>
+
+  <div class="controls">
+    <%= link_to "Delete", @link, method: :delete if @link.user == @user %>
+    <% if @link.archived_by?(@user) %>
+      Archived
+    <% else %>
+      <%= form_for [@link, @archive_link] do |f| %>
+        <%= f.submit "Archive" %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
+</div>
 
 <div class="new-comment">
   <%= form_for [@link, @comment] do |f| %>
@@ -26,7 +29,10 @@
 
 <div class="archives">
   <% @link.archive_links.each do |archive_link| %>
-    <span>Archived by <%= archive_link.user.name %> on <%= archive_link.created_at %></span>
+    <span>
+      Archived by <%= archive_link.user.name %> on <%= simple_time archive_link.created_at %>
+    </span>
+    <br/>
   <% end %>
 </div>
 

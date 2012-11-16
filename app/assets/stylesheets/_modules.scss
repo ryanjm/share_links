@@ -3,6 +3,16 @@
   margin: 0 auto;
 }
 
+.header {
+  overflow: auto;
+
+  h1 { display: inline; }
+  .controls { 
+    display: inline; 
+    margin: 0 20px;
+  }
+}
+
 // used to show off articles
 article {
   margin: 10px 0;
@@ -40,7 +50,7 @@ article {
 
 .new-link, .new-comment {
   background-color: lighten($bg-secondary-color,10%);
-  padding: $standard-spacing;
+  padding: $standard-spacing 0;
 }
 
 form {
@@ -64,8 +74,4 @@ form {
 
     &.submit { margin-left: 110px; }
   }
-}
-
-.controls {
-  float: right;
 }
