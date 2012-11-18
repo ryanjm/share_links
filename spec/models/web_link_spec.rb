@@ -7,7 +7,6 @@ describe WebLink do
     @r = User.create(name: "Ryan")
   end
 
-
   context ".archived" do
     it "should return empty if there are no archived links" do
       WebLink.archived.length.should eq(0)
@@ -15,21 +14,6 @@ describe WebLink do
     it "should return the archived links" do
       @w.archive!
       WebLink.archived.length.should eq(1)
-    end
-  end
-
-  context ".open_for" do
-    it "should return empty if there are no open links" do
-      @w.archive!
-      WebLink.open_for(@r).length.should eq(0)
-    end
-    it "should return the open link" do
-      WebLink.open_for(@r).length.should eq(1)
-    end
-    it "return empty if link archived for the user but open for others" do
-      m = User.create(name: "Michelle")
-      @w.archive(@r)
-      WebLink.open_for(@r).length.should eq(0)
     end
   end
 

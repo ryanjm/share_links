@@ -1,6 +1,7 @@
 class ArchiveLinksController < ApplicationController
   before_filter :set_current_user
 
+  # Not handling any error cases here
   def create
     link = WebLink.find(params[:web_link_id])
     link.archive(@user)

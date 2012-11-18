@@ -5,18 +5,19 @@
 <div class="new-link">
   <h3>Share New Link</h3>
   <%= form_for @link do |f| %>
+    <%= show_errors(@link) unless @link.errors.empty? %>
     <div class="control">
       <%= f.label :title %>
       <%= f.text_field :title, autocomplete: 'off', placeholder: 'Title' %>
     </div>
     <div class="control">
       <%= f.label :url, "Address" %>
-      <%= f.text_field :url, autocomplete: 'off', placeholder: 'URL' %>
+      <%= f.text_field :url, autocomplete: 'off', placeholder: 'http://...' %>
     </div>
     <%= f.fields_for :comments do |comment| %>
       <div class="control">
         <%= comment.label :body, "Comment" %>
-        <%= comment.text_area :body, size: "30x2", placeholder: 'comment' %>
+        <%= comment.text_area :body, size: "30x2", placeholder: 'Comment' %>
       </div>
     <% end %>
     <div class="control submit">

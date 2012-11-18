@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Checks for current_user_id inside the session
+  # if it is there then it sets @user, otherwise redirects
   def set_current_user
     if session[:current_user_id]
       @user = User.find(session[:current_user_id])

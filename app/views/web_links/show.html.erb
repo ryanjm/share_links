@@ -17,6 +17,7 @@
 
 <div class="new-comment">
   <%= form_for [@link, @comment] do |f| %>
+    <%= show_errors(@comment) unless @comment.errors.empty? %>
     <div class="control">
       <%= f.label :body, "Comment" %>
       <%= f.text_area :body, size: "30x3" %><br/>
