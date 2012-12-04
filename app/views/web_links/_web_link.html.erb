@@ -1,0 +1,23 @@
+<article class="js-article-<%= web_link.id %>">
+<cite><%= link_to web_link.title, web_link %> (<%= link_to "link", web_link.url %>)</cite>
+<div class="author">
+  <%= web_link.user.name %> - 
+  <%= time_ago_in_words(web_link.created_at) %> ago 
+  (<%= pluralize web_link.comments.count, "comment" %>) - 
+  <% if web_link.archived_by?(@user) %>
+    Archived
+  <% else %>
+    <%= form_for [web_link, ArchiveLink.new], remote: true do |f| %>
+      <%= f.hidden_field :redirect_to, value: "index" %>
+      <%= link_to "Archive", '#', class: "js-submit" %>
+    <% end %>
+  <% end %>
+</div>
+<% if !web_link.comments.empty? %>
+  <div class="comment">
+    <p><%= web_link.comments.last.body %></p>
+    <span><%= web_link.comments.last.user.name %></span>
+  </div>
+<% end %>
+
+</article>  
