@@ -13,3 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(document).ready(function(){
+  
+  // link to submit form
+  $(".js-submit").click(function(){
+    $(this).parent("form").submit();
+    return false;
+  });
+
+});

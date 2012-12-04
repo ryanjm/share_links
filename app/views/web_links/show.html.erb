@@ -8,7 +8,7 @@
       Archived
     <% else %>
       <%= form_for [@link, @archive_link] do |f| %>
-        <%= f.submit "Archive" %>
+        <%= link_to "Archive", '#', class: "js-submit" %>
       <% end %>
     <% end %>
   </div>

@@ -4,3 +4,13 @@
     <li><%= link_to link.title, link %> (submitted by: <%= link.user.name %>, last comment by: <%= link.comments.last.user.name unless link.comments.empty? %>)</li>
   <% end %>
 </ul>
+
+<% unless @user_archived.empty? %>
+  <h1>Your Archived Links</h1>
+  <p>(Not archived yet)</p>
+  <ul>
+    <% @user_archived.each do |link| %>
+      <li><%= link_to link.title, link %> (submitted by: <%= link.user.name %>, last comment by: <%= link.comments.last.user.name unless link.comments.empty? %>)</li>
+    <% end %>
+  </ul>
+<% end %>

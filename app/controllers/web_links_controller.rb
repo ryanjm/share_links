@@ -20,7 +20,7 @@ class WebLinksController < ApplicationController
     @link.comments.first.user = @user unless @link.comments.empty?
     @link.user = @user
     if @link.save
-      redirect_to @link
+      redirect_to web_links_path
     else
       flash[:error] = "Couldn't save"
       # need to set the same variables that index does so the 
@@ -39,6 +39,7 @@ class WebLinksController < ApplicationController
 
   def archived
     @links = WebLink.archived
+    @user_archived = @user.archived_web_links.where(archived: false)
   end
 
 end
